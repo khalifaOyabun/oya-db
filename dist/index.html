@@ -8,6 +8,29 @@
 </head>
 <body>
     <h1>firebase oya db</h1>
+    <h2>oya foods CRUD</h2>
+
+    <form class="add">
+        <label for="name">Recipe name</label>
+        <input type="text" name="name" required>
+        <label for="author">Recipe author</label>
+        <input type="text" name="author" required>
+        <label for="duration">Recipe duration</label>
+        <input type="number" min="1" name="duration" required>
+        <label for="img">Recipe image</label>
+        <input type="file" name="img" required>
+
+        <button>add a new recipe</button>
+    </form>
+
+    <form class="delete">
+        <label for="id">Recipe id</label>
+        <input type="text" name="id" required>
+        
+        <button>delete a recipe</button>
+    </form>
+
+
     <script src="bundle.js"></script>
 </body>
 </html>

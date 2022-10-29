@@ -2,7 +2,10 @@ import { initializeApp } from 'firebase/app'
 import {
     getFirestore,
     collection, 
-    getDocs
+    getDocs,
+    addDoc,
+    deleteDoc,
+    doc
 } from 'firebase/firestore'
 const firebaseConfig = {
     apiKey: "AIzaSyDYPOeRHWGvv7jnrzO6Z9lJ4uXpXL4SGs8",
@@ -33,3 +36,33 @@ getDocs(colRef)
     .catch(err => {
         console.log(err);
     })
+
+// adding recepes
+const addRecepeForm = document.querySelector('.add');
+addRecepeForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    addDoc(colRef, {
+        name: addRecepeForm.name.value,
+        author: addRecepeForm.author.value,
+        duration: addRecepeForm.duration.value,
+        img: img
+    })
+    .then(() => {
+        addRecepeForm.reset()
+    })
+
+})
+// deleting recepes
+const deleteRecepeForm = document.querySelector('.delete');
+deleteRecepeForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const docRef = doc(db, 'recepes', deleteRecepeForm.id.value)
+
+    deleteDoc(docRef)
+    .then(() => {
+        deleteRecepeForm.reset()
+    })
+
+})
